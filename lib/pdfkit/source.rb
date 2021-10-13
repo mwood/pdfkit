@@ -42,7 +42,7 @@ class PDFKit
     end
 
     def url_needs_escaping?
-      URI::decode(@source) == @source
+      CGI::unescape(@source) == @source
     end
   end
 end
