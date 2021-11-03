@@ -1,5 +1,6 @@
 require 'tempfile'
 require 'uri'
+require 'addressable/uri'
 
 class PDFKit
   class Source
@@ -38,7 +39,7 @@ class PDFKit
     private
 
     def shell_safe_url
-      url_needs_escaping? ? CGI::escape(@source) : @source
+      url_needs_escaping? ? Addressable::URI.escape(@source) : @source
     end
 
     def url_needs_escaping?
